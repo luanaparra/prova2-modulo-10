@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  app:
+    build: ./app
+    ports:
+      - "8000:800"
+    container_name: app
+    volumes:
+      - ./app:/app
+
+  gateway:
+      build: ./gateway
+      ports:
+        - "80:80"
+      depends_on: 
+        - app
+
+  
